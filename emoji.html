@@ -1,0 +1,14 @@
+---
+layout: page
+title: Emoji List
+permalink: /emoji/
+---
+
+{% for emoji in site.emoji %}
+  {% assign emoji_source = site.emoji_source | where:"title", emoji.title | first %}
+  {% assign emoji_json = site.emoji_json | where:"title", emoji.title | first %}
+
+  Details: <a href="{{ emoji.url | relative_url }}">{{ emoji.url }}</a><br>
+  Source: <a href="{{ emoji_source.url | relative_url }}">{{ emoji_source.url }}</a><br>
+  JSON: <a href="{{ emoji_json.url | relative_url }}">{{ emoji_json.url }}</a><br><br>
+{% endfor %}

@@ -1,0 +1,11 @@
+---
+---
+{% assign emoji_details = site.emoji | where:"title", page.title | first %}
+{% assign emoji_source = site.emoji_source | where:"title", page.title | first %}
+{
+    "name": {{ page.name | jsonify }},
+    "sources": {{ page.sources | jsonify }},
+    "license": {{ page.license | jsonify }},
+    "detailsUrl": {{ emoji_details.url | relative_url | jsonify }},
+    "sourceUrl": {{ emoji_source.url | relative_url | jsonify }}
+}

@@ -1,0 +1,35 @@
+title: emoji.lgbt
+email: cyber@emoji.lgbt
+description: >-
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+domain: "emoji.lgbt"
+baseurl: ""
+url: "https://emoji.lgbt"
+theme: minima
+plugins:
+  - jekyll-feed
+collections:
+  emoji:
+    output: true
+  emoji_source:
+    output: true
+  emoji_json:
+    output: true
+defaults:
+ - scope:
+     path: "_emoji"
+   values:
+     layout: emoji-details
+     permalink: /:collection/:title.html
+ - scope:
+     path: "_emoji_source"
+   values:
+     layout: emoji-source
+     permalink: /assets/svg/:title.svg
+ - scope:
+     path: "_emoji_json"
+   values:
+     layout: emoji-json
+     permalink: /api/v1/emoji/:title.json

@@ -1,0 +1,7 @@
+---
+layout: default
+---
+{% assign emoji_source = site.emoji_source | where:"title", page.title | first %}
+{% assign emoji_json = site.emoji_json | where:"title", page.title | first %}
+<h2>{{ page.title }}</h2>
+<img src="{{ emoji_source | relative_url }}">
