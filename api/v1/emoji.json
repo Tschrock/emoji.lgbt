@@ -19,7 +19,7 @@ permalink: /api/v1/emoji/
             "meta": {
                 "details_url": {{ emoji.url | absolute_url | jsonify }},
                 "source_url": {{ emoji_source.url | absolute_url | jsonify }},
-                "png_url": "https://resvg.pony.workers.dev/api/v1/7a31cfe8/{{ emoji.slug }}.png?width=64"
+                "png_url": "https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ emoji.slug }}.png?width=64"
             }
         }{% if forloop.last == false %},{% endif %}
       {% endfor %}

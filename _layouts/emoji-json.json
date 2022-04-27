@@ -15,9 +15,9 @@
             "details_url": {{ emoji_details.url | absolute_url | jsonify }},
             "source_url": {{ emoji_source.url | absolute_url | jsonify }},
             "png_sizes": {
-                "32": "https://resvg.pony.workers.dev/api/v1/7a31cfe8/{{ page.slug }}.png?width=32",
-                "64": "https://resvg.pony.workers.dev/api/v1/7a31cfe8/{{ page.slug }}.png?width=64",
-                "128": "https://resvg.pony.workers.dev/api/v1/7a31cfe8/{{ page.slug }}.png?width=128"
+                "32": "https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=32",
+                "64": "https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=64",
+                "128": "https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=128"
             }
         }
     }
