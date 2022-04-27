@@ -4,14 +4,11 @@ layout: default
 <script type="application/javascript">
     // Assign search data for emoji-list.js
     // @formatter:off
-    window.SEARCH_DATA = {
+    window.RAW_SEARCH_DATA = {
     {% for emoji in site.emoji -%}
-    {% assign emoji_source = site.emoji_source | where:"title", emoji.title | first -%}
 {{""}}    "{{ emoji.relative_path }}": {
             "title": "{{ emoji.title }}",
-            "svgUrl": "{{ emoji_source.url }}",
-            "pngUrl": "https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ emoji.slug }}.png?width=128",
-            "detailsUrl": "{{ emoji.url }}",
+            "slug": "{{ emoji.slug }}",
         },
     {% endfor -%}
     };
