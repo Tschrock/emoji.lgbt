@@ -1,24 +1,40 @@
 ---
 layout: default
 ---
-<div id="emoji-tiles" style="gap: 10px;" class="d-flex is-flex-wrap-wrap is-justify-content-center">
-    {% for emoji in site.emoji %}
+<script type="application/javascript">
+    // Assign search data for emoji-list.js
+    // @formatter:off
+    window.SEARCH_DATA = {
+    {% for emoji in site.emoji -%}
+    {% assign emoji_source = site.emoji_source | where:"title", emoji.title | first -%}
+{{""}}    "{{ emoji.relative_path }}": {
+            "title": "{{ emoji.title }}",
+            "svgUrl": "{{ emoji_source.url }}",
+            "pngUrl": "404",
+            "detailsUrl": "{{ emoji.url }}",
+        },
+    {% endfor -%}
+    };
+    // @formatter:on
+</script>
+<script defer src="{{ '/assets/js/emoji-list.js' | relative_url }}"></script>
 
-    {% assign emoji_source = site.emoji_source | where:"title", emoji.title | first %}
-    {% assign emoji_json = site.emoji_json | where:"title", emoji.title | first %}
-
-    <div class="card">
-        <div class="card-image d-flex is-justify-content-center">
-            <figure class="image is-96x96 my-3">
-                <img src="{{ emoji_source.url | relative_url }}" alt="{{ emoji.title }}">
-            </figure>
+<div class="d-flex is-flex-direction-column is-align-items-center">
+    <div class="mb-3">
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label" for="search-bar">Search</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input id="search-bar" class="input" type="text" placeholder="e.g. aro, ghost">
+                    </div>
+                </div>
+            </div>
         </div>
-        <footer class="card-footer">
-            <a href="{{ emoji.url | relative_url }}" class="card-footer-item">Details</a>
-            <a href="{{ emoji_source.url | relative_url }}" class="card-footer-item">SVG</a>
-            <a href="#" class="card-footer-item has-text-grey" style="pointer-events: none;">PNG</a>
-        </footer>
     </div>
 
-    {% endfor %}
+    <div id="emoji-tiles" style="gap: 10px;" class="d-flex is-flex-wrap-wrap is-justify-content-center">
+    </div>
 </div>
