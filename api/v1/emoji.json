@@ -1,16 +1,18 @@
 ---
-permalink: /api/v1/emoji/
+permalink: /api/v1/emoji.json
+title: Emoji List
+description: Lists all emoji.
 ---
 {
     "data": [
-      {% for emoji in site.emoji %}
-        {% assign emoji_source = site.emoji_source | where:"title", emoji.title | first %}
-        {% assign emoji_json = site.emoji_json | where:"title", emoji.title | first %}
+      {%- for emoji in site.emoji -%}
+        {%- assign emoji_source = site.emoji_source | where:"title", emoji.title | first -%}
+        {%- assign emoji_json = site.emoji_json | where:"title", emoji.title | first %}
         {
             "type": "emoji",
             "id": {{ emoji.slug | jsonify }},
             "attributes": {
-                "name": {{ emoji.name | jsonify }},
+                "name": {{ emoji.title | jsonify }},
                 "license": {{ emoji.license | jsonify }}
             },
             "links": {
@@ -21,7 +23,7 @@ permalink: /api/v1/emoji/
                 "source_url": {{ emoji_source.url | absolute_url | jsonify }},
                 "png_url": "https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ emoji.slug }}.png?width=64"
             }
-        }{% if forloop.last == false %},{% endif %}
-      {% endfor %}
+        }{% unless forloop.last %},{% endunless -%}
+      {%- endfor %}
     ]
 }
