@@ -1,5 +1,5 @@
 ---
-name: Asexual Flag
+name: Aromantic Flag
 sources:
  - name: CyberPon3
    link: https://twitter.com/CyberPon3
@@ -8,5 +8,5 @@ sources:
 license: CC-BY-NC-4.0
 ---
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-    <g transform="rotate(0)" clip-path="url(#stripesClip)"><rect x="0" y="5" width="36" height="6.60" fill="#000000"></rect><rect x="0" y="11.50" width="36" height="6.60" fill="#959595"></rect><rect x="0" y="18" width="36" height="6.60" fill="#ffffff"></rect><rect x="0" y="24.50" width="36" height="6.60" fill="#670066"></rect></g>
+    <g transform="rotate(0)" clip-path="url(#stripesClip)"><rect x="0" y="5" width="36" height="5.30" fill="#3ca542"></rect><rect x="0" y="10.20" width="36" height="5.30" fill="#a8d377"></rect><rect x="0" y="15.40" width="36" height="5.30" fill="#fefefe"></rect><rect x="0" y="20.60" width="36" height="5.30" fill="#a9a9a9"></rect><rect x="0" y="25.80" width="36" height="5.30" fill="#000000"></rect></g>
 <defs><clipPath id="stripesClip"><path id="stripes" fill="#EEE" d="M36 27c0 2.209-1.791 4-4 4H4c-2.209 0-4-1.791-4-4V9c0-2.209 1.791-4 4-4h28c2.209 0 4 1.791 4 4v18z" transform="rotate(0)"></path></clipPath></defs></svg>

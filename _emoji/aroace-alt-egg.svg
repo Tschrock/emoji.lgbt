@@ -1,0 +1,13 @@
+---
+name: Aromantic Asexual Egg (Alt)
+sources:
+ - name: CyberPon3
+   link: https://twitter.com/CyberPon3
+ - name: Twemoji
+   link: https://twemoji.twitter.com/
+license: CC-BY-NC-4.0
+---
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+    <g transform="rotate(0)" clip-path="url(#stripesClip)"><rect x="6" y="1" width="24" height="5.767" fill="#000000"></rect><rect x="6" y="6.667" width="24" height="5.767" fill="#670066"></rect><rect x="6" y="12.333" width="24" height="5.767" fill="#959595"></rect><rect x="6" y="18" width="24" height="5.767" fill="#ffffff"></rect><rect x="6" y="23.667" width="24" height="5.767" fill="#a8d377"></rect><rect x="6" y="29.333" width="24" height="5.767" fill="#3ca542"></rect></g>
+    <path fill="rgba(50,50,50,0.5)" d="M23.142 3.403c2.908 3.519 5.108 9.018 5.108 14.453 0 9.009-5.672 14.393-11.344 14.393-4.541 0-9.075-3.459-10.705-9.459C7.261 30.484 12.623 35 18 35c6 0 12-5.611 12-15 0-6.531-3.086-13.161-6.858-16.597z"></path>
+<defs><clipPath id="stripesClip"><path id="stripes" fill="#F7DECE" d="M23.142 3.403C21.492 1.899 19.712 1 18 1 12.375 1 6 10.611 6 20c0 .975.079 1.899.202 2.791C7.261 30.484 12.623 35 18 35c6 0 12-5.611 12-15 0-6.531-3.086-13.161-6.858-16.597z" transform="rotate(0)"></path></clipPath></defs></svg>
