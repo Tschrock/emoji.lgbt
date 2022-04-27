@@ -7,7 +7,7 @@
         "type": "emoji",
         "id": {{ page.slug | jsonify }},
         "attributes": {
-            "name": {{ page.name | jsonify }},
+            "name": {{ page.title | jsonify }},
             "sources": {{ page.sources | jsonify }},
             "license": {{ page.license | jsonify }}
         },
