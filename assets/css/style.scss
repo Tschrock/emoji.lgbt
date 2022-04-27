@@ -1,5 +1,40 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
 ---
 
-@import "minima";
+// Make the footer less padded, vertically.
+$footer-padding: 1.5rem 1.5rem 3rem;
+
+// Redefine colors to match the logo.
+$red: #e50000;
+$orange: #ff8d00;
+$yellow: #ffee00;
+$green: #008121;
+$blue: #004cff;
+$purple: #760188;
+
+$primary: $purple;
+
+@import "bulma/sass/utilities/_all";
+
+@import "bulma/sass/base/_all";
+
+@import "bulma/sass/components/navbar";
+@import "bulma/sass/components/card";
+
+@import "bulma/sass/elements/container";
+@import "bulma/sass/elements/image";
+@import "bulma/sass/elements/title";
+
+@import "bulma/sass/helpers/color";
+@import "bulma/sass/helpers/flexbox";
+@import "bulma/sass/helpers/float";
+@import "bulma/sass/helpers/spacing";
+@import "bulma/sass/helpers/typography";
+
+@import "bulma/sass/layout/footer";
+@import "bulma/sass/layout/section";
+
+// Now declare all our custom styles.
+.d-flex {
+  display: flex;
+}

@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<div id="emoji-tiles" style="gap: 10px;" class="d-flex is-flex-wrap-wrap is-justify-content-center">
+    {% for emoji in site.emoji %}
+
+    {% assign emoji_source = site.emoji_source | where:"title", emoji.title | first %}
+    {% assign emoji_json = site.emoji_json | where:"title", emoji.title | first %}
+
+    <div class="card">
+        <div class="card-image d-flex is-justify-content-center">
+            <figure class="image is-96x96 my-3">
+                <img src="{{ emoji_source.url | relative_url }}" alt="{{ emoji.title }}">
+            </figure>
+        </div>
+        <footer class="card-footer">
+            <a href="{{ emoji.url | relative_url }}" class="card-footer-item">Details</a>
+            <a href="{{ emoji_source.url | relative_url }}" class="card-footer-item">SVG</a>
+            <a href="#" class="card-footer-item has-text-grey" style="pointer-events: none;">PNG</a>
+        </footer>
+    </div>
+
+    {% endfor %}
+</div>

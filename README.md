@@ -1,4 +1,4 @@
 emoji.lgbt
 ==========
 
-A website for prite themed custom emoji
+A website for pride-themed custom emoji.

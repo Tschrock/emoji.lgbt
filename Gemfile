@@ -1,15 +1,10 @@
 source "https://rubygems.org"
 
-# This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem "minima", "~> 2.5"
-
 # Use github-pages
 gem "github-pages", "~> 225", group: :jekyll_plugins
 
-# Plugins
-group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.12"
-end
+# LibSass is deprecated, use dart-sass instead
+gem 'sass-embedded', '~> 1.0'
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
