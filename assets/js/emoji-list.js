@@ -91,8 +91,7 @@ function renderEmojiCard(emoji) {
         <footer class="card-footer">
             <a href="${emoji.detailsUrl}" class="card-footer-item">Details</a>
             <a href="${emoji.svgUrl}" class="card-footer-item">SVG</a>
-            <!-- TODO: Enable when we have PNG emoji links -->
-            <a href="${emoji.pngUrl}" class="card-footer-item has-text-grey" style="pointer-events: none;">PNG</a>
+            <a href="${emoji.pngUrl}" class="card-footer-item">PNG</a>
         </footer>
     </div>
 `;
