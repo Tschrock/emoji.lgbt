@@ -3,9 +3,22 @@
 {% assign emoji_details = site.emoji | where:"title", page.title | first %}
 {% assign emoji_source = site.emoji_source | where:"title", page.title | first %}
 {
-    "name": {{ page.name | jsonify }},
-    "sources": {{ page.sources | jsonify }},
-    "license": {{ page.license | jsonify }},
-    "detailsUrl": {{ emoji_details.url | relative_url | jsonify }},
-    "sourceUrl": {{ emoji_source.url | relative_url | jsonify }}
+    "data": {
+        "type": "emoji",
+        "id": {{ page.slug | jsonify }},
+        "attributes": {
+            "name": {{ page.name | jsonify }},
+            "sources": {{ page.sources | jsonify }},
+            "license": {{ page.license | jsonify }}
+        },
+        "meta": {
+            "details_url": {{ emoji_details.url | absolute_url | jsonify }},
+            "source_url": {{ emoji_source.url | absolute_url | jsonify }},
+            "png_sizes": {
+                "32": "https://resvg.pony.workers.dev/api/v1/7a31cfe8/{{ page.slug }}.png?width=32",
+                "64": "https://resvg.pony.workers.dev/api/v1/7a31cfe8/{{ page.slug }}.png?width=64",
+                "128": "https://resvg.pony.workers.dev/api/v1/7a31cfe8/{{ page.slug }}.png?width=128"
+            }
+        }
+    }
 }

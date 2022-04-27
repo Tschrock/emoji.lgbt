@@ -1,0 +1,27 @@
+---
+permalink: /api/v1/emoji/
+---
+{
+    "data": [
+      {% for emoji in site.emoji %}
+        {% assign emoji_source = site.emoji_source | where:"title", emoji.title | first %}
+        {% assign emoji_json = site.emoji_json | where:"title", emoji.title | first %}
+        {
+            "type": "emoji",
+            "id": {{ emoji.slug | jsonify }},
+            "attributes": {
+                "name": {{ emoji.name | jsonify }},
+                "license": {{ emoji.license | jsonify }}
+            },
+            "links": {
+                "self": {{ emoji_json.url | absolute_url | jsonify }}
+            },
+            "meta": {
+                "details_url": {{ emoji.url | absolute_url | jsonify }},
+                "source_url": {{ emoji_source.url | absolute_url | jsonify }},
+                "png_url": "https://resvg.pony.workers.dev/api/v1/7a31cfe8/{{ emoji.slug }}.png?width=64"
+            }
+        }{% if forloop.last == false %},{% endif %}
+      {% endfor %}
+    ]
+}
