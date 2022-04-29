@@ -3,39 +3,120 @@ layout: base
 ---
 {% assign emoji_source = site.emoji_source | where:"title", page.title | first -%}
 {% assign emoji_json = site.emoji_json | where:"title", page.title | first -%}
-{% capture emoji_png %}https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=128{% endcapture %}
+
+{% assign license = site.data.licenses | where:"id",page.license | first %}
+{% if license == nil %}{% assign license = site.data.licenses | where:"title",page.license | first %}{% endif %}
+
+{% assign svg_url = emoji_source.url | absolute_url %}
+{% assign json_url = emoji_json.url | absolute_url %}
+
 <nav class="breadcrumb px-3 pt-3" aria-label="breadcrumbs">
     <ul>
         <li><a href="../">Emoji List</a></li>
-        <li class="is-active"><a href="#" aria-current="page">Emoji Details: {{ page.title }}</a></li>
+        <li class="is-active"><a href="#" aria-current="page">{{ page.title }}</a></li>
     </ul>
 </nav>
+
 <div class="d-flex is-justify-content-center pb-3">
     <div class="card">
         <div class="card-header">
             <h1 class="card-header-title">{{ page.title }}</h1>
         </div>
-        <div class="card-image d-flex is-justify-content-center">
-            <figure class="image is-128x128 mt-2">
-                <img src="{{ emoji_source.url | relative_url }}" alt="{{ page.title }}" class="show-off-transparency"/>
-            </figure>
-        </div>
         <div class="card-content pt-2">
+
+            <div class="emote-preview">
+                <img class="show-off-transparency image is-24x24" src="{{ svg_url }}" alt="{{ page.title }}" />
+                <img class="show-off-transparency image is-32x32" src="{{ svg_url }}" alt="{{ page.title }}" />
+                <img class="show-off-transparency image is-48x48" src="{{ svg_url }}" alt="{{ page.title }}" />
+                <img class="show-off-transparency image is-64x64" src="{{ svg_url }}" alt="{{ page.title }}" />
+                <img class="show-off-transparency image is-96x96" src="{{ svg_url }}" alt="{{ page.title }}" />
+                <img class="show-off-transparency image is-128x128" src="{{ svg_url }}" alt="{{ page.title }}" />
+            </div>
+            <div class="dis-preview">
+                <div class="dis-message">
+                    <div class="dis-profile"></div>
+                    <div>
+                        <div class="dis-name">Trans Kitty <small>Today at 2:50 PM</small></div>
+                        <img class="dis-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:" />
+                    </div>
+                </div>
+                <div class="dis-message">
+                    <div class="dis-profile"></div>
+                    <div>
+                        <div class="dis-name">Trans Kitty <small>Today at 2:50 PM</small></div>
+                        <div class="dis-content">
+                            <img class="dis-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:" />
+                            meow~
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slack-preview">
+                <div class="slack-message">
+                    <div class="slack-profile"></div>
+                    <div>
+                        <div class="slack-name">Trans Kitty <small>2:50 PM</small></div>
+                        <img class="slack-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:" />
+                    </div>
+                </div>
+                <div class="slack-message">
+                    <div class="slack-profile"></div>
+                    <div>
+                        <div class="slack-name">Trans Kitty <small>2:50 PM</small></div>
+                        <div class="slack-content">
+                            <img class="slack-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:" />
+                            meow~
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <p>
-                <strong>Slug:</strong>
-                <code>{{ page.slug }}</code>
+                <strong>Source:</strong>
+                {% for source in page.sources %}
+                    <a href="{{ source.link }}">{{ source.name }}</a>{% unless forloop.last %}, {% endunless -%}
+                {% else %}
+                    Unknown
+                {% endfor %}
             </p>
+            
             <p>
-                <strong>SVG URL:</strong>
-                <a href="{{ emoji_source.url | relative_url }}">{{ emoji_source.url | absolute_url }}</a>
+                <strong>License:</strong>
+                {% if license != nil %}
+                    <a href="{{ license.url }}" title="{{ license.title }}">{{ license.id }}</a>
+                {% else %}
+                    <p>Unknown</p>
+                {% endif %}
             </p>
+
             <p>
-                <strong>PNG URL:</strong>
-                <a href="{{ emoji_png }}">{{ emoji_png }}</a>
-            </p>
-            <p>
-                <strong>JSON URL:</strong>
-                <a href="{{ emoji_json.url | relative_url }}">{{ emoji_json.url | absolute_url }}</a>
+                <a class="button" href="{{ svg_url }}">SVG</a>
+            
+                <div class="dropdown is-hoverable">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="png-menu">
+                        <span>PNG</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="png-menu" role="menu">
+                      <div class="dropdown-content">
+                        <a href="https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=32" class="dropdown-item">
+                          32x32
+                        </a>
+                        <a href="https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=64" class="dropdown-item">
+                          64x64
+                        </a>
+                        <a href="https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=128" class="dropdown-item">
+                          128x128
+                        </a>
+                      </div>
+                    </div>
+                </div>
+
+                <a class="button is-family-monospace" href="{{ json_url }}">{json:api}</a>
             </p>
         </div>
     </div>
