@@ -1,7 +1,42 @@
 ---
-layout: default
+layout: base
 ---
-{% assign emoji_source = site.emoji_source | where:"title", page.title | first %}
-{% assign emoji_json = site.emoji_json | where:"title", page.title | first %}
-<h2>{{ page.title }}</h2>
-<img src="{{ emoji_source | relative_url }}">
+{% assign emoji_source = site.emoji_source | where:"title", page.title | first -%}
+{% assign emoji_json = site.emoji_json | where:"title", page.title | first -%}
+{% capture emoji_png %}https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=128{% endcapture %}
+<nav class="breadcrumb px-3 pt-3" aria-label="breadcrumbs">
+    <ul>
+        <li><a href="../">Emoji List</a></li>
+        <li class="is-active"><a href="#" aria-current="page">Emoji Details: {{ page.title }}</a></li>
+    </ul>
+</nav>
+<div class="d-flex is-justify-content-center pb-3">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-header-title">{{ page.title }}</h1>
+        </div>
+        <div class="card-image d-flex is-justify-content-center">
+            <figure class="image is-96x96 my-3">
+                <img src="{{ emoji_source.url | relative_url }}" alt="{{ page.title }}" class="image is-128x128"/>
+            </figure>
+        </div>
+        <div class="card-content">
+            <p>
+                <strong>Slug:</strong>
+                <code>{{ page.slug }}</code>
+            </p>
+            <p>
+                <strong>SVG URL:</strong>
+                <a href="{{ emoji_source.url | relative_url }}">{{ emoji_source.url | absolute_url }}</a>
+            </p>
+            <p>
+                <strong>PNG URL:</strong>
+                <a href="{{ emoji_png }}">{{ emoji_png }}</a>
+            </p>
+            <p>
+                <strong>JSON URL:</strong>
+                <a href="{{ emoji_json.url | relative_url }}">{{ emoji_json.url | absolute_url }}</a>
+            </p>
+        </div>
+    </div>
+</div>
