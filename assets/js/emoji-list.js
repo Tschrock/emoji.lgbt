@@ -124,18 +124,19 @@ document.addEventListener("DOMContentLoaded", () => {
 function renderEmojiCard(emoji) {
     const domElement = document.createElement("div");
     domElement.innerHTML = `
-    <div class="card">
+    <a href="${emoji.detailsUrl}" role="button" class="card button is-white d-flex is-flex-direction-column p-0" 
+       style="width: 196px; height: 196px; white-space: normal;">
         <div class="card-image d-flex is-justify-content-center">
             <figure class="image is-96x96 my-3">
                 <img src="${emoji.svgUrl}" alt="${emoji.title}">
             </figure>
         </div>
-        <footer class="card-footer">
-            <a href="${emoji.detailsUrl}" class="card-footer-item">Details</a>
-            <a href="${emoji.svgUrl}" class="card-footer-item">SVG</a>
-            <a href="${emoji.pngUrl}" class="card-footer-item">PNG</a>
-        </footer>
-    </div>
+        <div class="card-content pt-0 pb-1 is-justify-content-center is-flex-grow-1">
+            <p class="is-flex-grow-0 has-text-centered has-text-weight-normal">
+                ${emoji.title}
+            </p>
+        </div>
+    </a>
 `;
     return domElement;
 }
