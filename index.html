@@ -1,19 +1,7 @@
 ---
 layout: default
 ---
-<script type="application/javascript">
-    // Assign search data for emoji-list.js
-    // @formatter:off
-    window.RAW_SEARCH_DATA = {
-    {% for emoji in site.emoji -%}
-{{""}}    "{{ emoji.relative_path }}": {
-            "title": "{{ emoji.title }}",
-            "slug": "{{ emoji.slug }}",
-        },
-    {% endfor -%}
-    };
-    // @formatter:on
-</script>
+{% include embed-emoji-data.html %}
 <script defer src="{{ '/assets/js/emoji-list.js' | relative_url }}"></script>
 
 <div class="d-flex is-flex-direction-column is-align-items-center">
