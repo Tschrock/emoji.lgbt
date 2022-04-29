@@ -127,7 +127,7 @@ function renderEmojiCard(emoji) {
     <a href="${emoji.detailsUrl}" role="button" class="card button is-white d-flex is-flex-direction-column p-0" 
        style="width: 196px; height: 196px; white-space: normal;">
         <div class="card-image d-flex is-justify-content-center">
-            <figure class="image is-96x96 my-3">
+            <figure class="image is-96x96 my-3 p-1 show-off-transparency">
                 <img src="${emoji.svgUrl}" alt="${emoji.title}">
             </figure>
         </div>
