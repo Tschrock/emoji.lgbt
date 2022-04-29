@@ -1,0 +1,115 @@
+/* Social-isms: CSS to pretend like we have the styles of specific social media. */
+
+@mixin square($size, $radius: 0) {
+  width: $size;
+  height: $size;
+  @if $radius != 0 {
+    border-radius: $radius;
+  }
+}
+
+.emote-preview {
+  display: flex;
+  gap: 0.25rem;
+  padding: 1rem;
+  align-items: flex-end;
+}
+
+.dis-preview {
+  background-color: #36393f;
+  color: white;
+
+  border: 2px solid #5865f2;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+
+  margin: 1em auto;
+  max-width: 20rem;
+}
+
+.dis-message {
+  display: flex;
+  gap: 1rem;
+}
+
+.dis-profile {
+  @include square(40px, 50%);
+  background-color: #a3a6aa;
+}
+
+.dis-name {
+  color: white;
+  > small {
+    font-size: 0.75rem;
+    color: #a3a6aa;
+    margin-left: 0.25rem;
+  }
+}
+
+.dis-emote {
+  @include square(48px);
+}
+
+.dis-content {
+  color: #dcddde;
+  .dis-emote {
+    @include square(22px);
+    vertical-align: middle;
+  }
+}
+
+.slack-preview {
+  font-size: 15px;
+  background-color: white;
+  color: #1d1c1d;
+
+  border: 2px solid;
+  border-color: #36C5F0 #2EB67D #E01E5A #ECB22E;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem 1.25rem;
+
+  margin: 1em auto;
+  max-width: 20rem;
+}
+
+.slack-message {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.slack-profile {
+  @include square(36px, 4px);
+  background-color: #a3a6aa;
+}
+
+.slack-name {
+  margin-top: -0.25rem;
+  line-height: 1.5;
+  font-weight: 900;
+  > small {
+    font-weight: normal;
+    font-size: 12px;
+    color: #616061;
+    margin-left: 0.25rem;
+  }
+}
+
+.slack-emote {
+  @include square(32px);
+  vertical-align: top;
+}
+
+.slack-content {
+  .slack-emote {
+    @include square(22px);
+    vertical-align: bottom;
+  }
+}
