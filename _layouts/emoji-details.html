@@ -49,51 +49,57 @@ layout: base
                     Unknown
                     {% endif %}
                 </p>
-
-                <a class="button" href="{{ svg_url }}">
+            </div>
+            <footer class="card-footer">
+                <div class="card-footer-item">
+                    <a class="button" href="{{ svg_url }}">
                     <span class="icon">
                         <i class="fas fa-circle-nodes"></i>
                     </span>
-                    <span>SVG</span>
-                </a>
+                        <span>SVG</span>
+                    </a>
+                </div>
 
-                <div class="dropdown is-hoverable">
-                    <div class="dropdown-trigger">
-                        <button class="button" aria-haspopup="true" aria-controls="png-menu">
+                <div class="card-footer-item">
+                    <div class="dropdown is-hoverable">
+                        <div class="dropdown-trigger">
+                            <button class="button" aria-haspopup="true" aria-controls="png-menu">
                             <span class="icon">
                                 <i class="fas fa-image"></i>
                             </span>
-                            <span>PNG</span>
-                            <span class="icon is-small">
+                                <span>PNG</span>
+                                <span class="icon is-small">
                                 <i class="fas fa-angle-down" aria-hidden="true"></i>
                             </span>
-                        </button>
-                    </div>
-                    <div class="dropdown-menu" id="png-menu" role="menu">
-                        <div class="dropdown-content">
-                            {% assign sizes = "32, 64, 128" | split: ", " -%}
-                            {% for size in sizes -%}
-                            <div class="dropdown-item">
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="png-menu" role="menu">
+                            <div class="dropdown-content">
+                                {% assign sizes = "32, 64, 128" | split: ", " -%}
+                                {% for size in sizes -%}
+                                <div class="dropdown-item">
                                 <span class="icon">
                                     <i class="fas fa-link"></i>
                                 </span>
-                                <a href="https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width={{ size }}">
-                                    {{ size }}x{{ size }}
-                                </a>
+                                    <a href="https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width={{ size }}">
+                                        {{ size }}x{{ size }}
+                                    </a>
+                                </div>
+                                {% endfor -%}
                             </div>
-                            {% endfor -%}
                         </div>
                     </div>
                 </div>
 
-
-                <a class="button" href="{{ json_url }}">
+                <div class="card-footer-item">
+                    <a class="button" href="{{ json_url }}">
                     <span class="icon">
                         <i class="fas fa-code"></i>
                     </span>
-                    <span>JSON</span>
-                </a>
-            </div>
+                        <span>JSON</span>
+                    </a>
+                </div>
+            </footer>
         </div>
     </div>
     <div class="column is-narrow">
