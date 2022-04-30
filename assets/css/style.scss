@@ -19,9 +19,9 @@ $primary: $purple;
 @import "bulma/sass/base/_all";
 
 @import "bulma/sass/components/breadcrumb";
-@import "bulma/sass/components/navbar";
 @import "bulma/sass/components/card";
 @import "bulma/sass/components/dropdown";
+@import "bulma/sass/components/navbar";
 
 @import "bulma/sass/elements/box";
 @import "bulma/sass/elements/button";
@@ -33,6 +33,8 @@ $primary: $purple;
 @import "bulma/sass/form/input-textarea";
 @import "bulma/sass/form/tools";
 
+@import "bulma/sass/grid/columns";
+
 @import "bulma/sass/helpers/color";
 @import "bulma/sass/helpers/flexbox";
 @import "bulma/sass/helpers/float";
@@ -41,6 +43,10 @@ $primary: $purple;
 
 @import "bulma/sass/layout/footer";
 @import "bulma/sass/layout/section";
+
+:root {
+  --profile-color: #{$orange};
+}
 
 // Now declare all our custom styles.
 .d-flex {

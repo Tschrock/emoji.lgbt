@@ -17,107 +17,154 @@ layout: base
     </ul>
 </nav>
 
-<div class="d-flex is-justify-content-center pb-3">
-    <div class="card">
-        <div class="card-header">
-            <h1 class="card-header-title">{{ page.title }}</h1>
-        </div>
-        <div class="card-content pt-2">
+<div class="columns is-multiline is-justify-content-center pb-3">
+    <div class="column is-narrow">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-header-title">Details about {{ page.title }}</h1>
+            </div>
+            <div class="card-content pt-2">
+                <div class="emote-preview">
+                    {% assign sizes = "24, 32, 48, 64, 96, 128" | split: ", " -%}
+                    {% for size in sizes -%}
+                    <img class="show-off-transparency image is-{{ size }}x{{ size }}"
+                         src="{{ svg_url }}" alt="{{ page.title }}"/>
+                    {% endfor -%}
+                </div>
 
-            <div class="emote-preview">
-                <img class="show-off-transparency image is-24x24" src="{{ svg_url }}" alt="{{ page.title }}" />
-                <img class="show-off-transparency image is-32x32" src="{{ svg_url }}" alt="{{ page.title }}" />
-                <img class="show-off-transparency image is-48x48" src="{{ svg_url }}" alt="{{ page.title }}" />
-                <img class="show-off-transparency image is-64x64" src="{{ svg_url }}" alt="{{ page.title }}" />
-                <img class="show-off-transparency image is-96x96" src="{{ svg_url }}" alt="{{ page.title }}" />
-                <img class="show-off-transparency image is-128x128" src="{{ svg_url }}" alt="{{ page.title }}" />
-            </div>
-            <div class="dis-preview">
-                <div class="dis-message">
-                    <div class="dis-profile"></div>
-                    <div>
-                        <div class="dis-name">Trans Kitty <small>Today at 2:50 PM</small></div>
-                        <img class="dis-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:" />
-                    </div>
-                </div>
-                <div class="dis-message">
-                    <div class="dis-profile"></div>
-                    <div>
-                        <div class="dis-name">Trans Kitty <small>Today at 2:50 PM</small></div>
-                        <div class="dis-content">
-                            <img class="dis-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:" />
-                            meow~
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slack-preview">
-                <div class="slack-message">
-                    <div class="slack-profile"></div>
-                    <div>
-                        <div class="slack-name">Trans Kitty <small>2:50 PM</small></div>
-                        <img class="slack-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:" />
-                    </div>
-                </div>
-                <div class="slack-message">
-                    <div class="slack-profile"></div>
-                    <div>
-                        <div class="slack-name">Trans Kitty <small>2:50 PM</small></div>
-                        <div class="slack-content">
-                            <img class="slack-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:" />
-                            meow~
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p>
-                <strong>Source:</strong>
-                {% for source in page.sources %}
+                <p>
+                    <strong>{% if page.sources.size == 1 %}Source{% else %}Sources{% endif %}:</strong>
+                    {% for source in page.sources %}
                     <a href="{{ source.link }}">{{ source.name }}</a>{% unless forloop.last %}, {% endunless -%}
-                {% else %}
+                    {% else %}
                     Unknown
-                {% endfor %}
-            </p>
-            
-            <p>
-                <strong>License:</strong>
-                {% if license != nil %}
-                    <a href="{{ license.url }}" title="{{ license.title }}">{{ license.id }}</a>
-                {% else %}
-                    <p>Unknown</p>
-                {% endif %}
-            </p>
+                    {% endfor %}
+                </p>
 
-            <p>
-                <a class="button" href="{{ svg_url }}">SVG</a>
-            
+                <p>
+                    <strong>License:</strong>
+                    {% if license != nil %}
+                    <a href="{{ license.url }}" title="{{ license.title }}">{{ license.id }}</a>
+                    {% else %}
+                    Unknown
+                    {% endif %}
+                </p>
+
+                <a class="button" href="{{ svg_url }}">
+                    <span class="icon">
+                        <i class="fas fa-circle-nodes"></i>
+                    </span>
+                    <span>SVG</span>
+                </a>
+
                 <div class="dropdown is-hoverable">
                     <div class="dropdown-trigger">
-                      <button class="button" aria-haspopup="true" aria-controls="png-menu">
-                        <span>PNG</span>
-                        <span class="icon is-small">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </button>
+                        <button class="button" aria-haspopup="true" aria-controls="png-menu">
+                            <span class="icon">
+                                <i class="fas fa-image"></i>
+                            </span>
+                            <span>PNG</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
                     </div>
                     <div class="dropdown-menu" id="png-menu" role="menu">
-                      <div class="dropdown-content">
-                        <a href="https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=32" class="dropdown-item">
-                          32x32
-                        </a>
-                        <a href="https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=64" class="dropdown-item">
-                          64x64
-                        </a>
-                        <a href="https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width=128" class="dropdown-item">
-                          128x128
-                        </a>
-                      </div>
+                        <div class="dropdown-content">
+                            {% assign sizes = "32, 64, 128" | split: ", " -%}
+                            {% for size in sizes -%}
+                            <div class="dropdown-item">
+                                <span class="icon">
+                                    <i class="fas fa-link"></i>
+                                </span>
+                                <a href="https://resvg.emoji.lgbt/api/v1/7a31cfe8/{{ page.slug }}.png?width={{ size }}">
+                                    {{ size }}x{{ size }}
+                                </a>
+                            </div>
+                            {% endfor -%}
+                        </div>
                     </div>
                 </div>
 
-                <a class="button is-family-monospace" href="{{ json_url }}">{json:api}</a>
-            </p>
+
+                <a class="button" href="{{ json_url }}">
+                    <span class="icon">
+                        <i class="fas fa-code"></i>
+                    </span>
+                    <span>JSON</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="column is-narrow">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-header-title">Social Media Preview</h1>
+            </div>
+            <div class="card-content">
+                <div class="dis-preview">
+                    <div class="dis-message">
+                        <span class="dis-profile icon d-flex is-justify-content-center is-align-items-center">
+                            <i class="fab fa-discord fa-xl"></i>
+                        </span>
+                        <div>
+                            <div>
+                                <span class="dis-name">Delicious Cake</span>
+                                <small class="dis-time">Today at 2:50 PM</small>
+                            </div>
+                            <div>
+                                <img class="dis-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dis-message">
+                        <span class="dis-profile icon d-flex is-justify-content-center is-align-items-center">
+                            <i class="fab fa-discord fa-xl"></i>
+                        </span>
+                        <div>
+                            <div>
+                                <span class="dis-name">Delicious Cake</span>
+                                <small class="dis-time">Today at 2:50 PM</small>
+                            </div>
+                            <div class="dis-content">
+                                <img class="dis-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:"/>
+                                is a great emoji!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slack-preview">
+                    <div class="slack-message">
+                        <span class="slack-profile icon d-flex is-justify-content-center is-align-items-center">
+                            <i class="fab fa-slack fa-xl"></i>
+                        </span>
+                        <div>
+                            <div class="slack-name-time">
+                                <span class="slack-name">A Professional With Standards</span>
+                                <small>2:50 PM</small>
+                            </div>
+                            <div>
+                                <img class="slack-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slack-message">
+                        <span class="slack-profile icon d-flex is-justify-content-center is-align-items-center">
+                            <i class="fab fa-slack fa-xl"></i>
+                        </span>
+                        <div>
+                            <div class="slack-name-time">
+                                <span class="slack-name">A Professional With Standards</span>
+                                <small>2:50 PM</small>
+                            </div>
+                            <div class="slack-content">
+                                <img class="slack-emote" src="{{ svg_url }}" alt=":{{ page.slug }}:"/>
+                                is a great emoji!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
