@@ -8,82 +8,25 @@
  * Represents a single emoji.
  */
 class Emoji {
-    constructor(title, slug) {
-        this.title = title;
-        this.slug = slug;
-        this.titleLower = title.toLowerCase();
-        this.slugLower = slug.toLowerCase();
+    constructor(id, title, detailsUrl, svgUrl, tags) {
+        this.id = id
+        this.title = title
+        this.detailsUrl = detailsUrl
+        this.svgUrl = svgUrl
+        this.searchTerms = [
+            ...title.toLowerCase().split(' '),
+            ...id.split('-'),
+            ...(tags || [])
+        ]
     }
 
     /**
-     * Get emoji details url.
-     * @returns {string} the emoji details url
+     * @param {string[]} terms
+     * @returns {boolean}
      */
-    get detailsUrl() {
-        return `/emoji/${this.slug}.html`;
+    match(terms) {
+        return terms.every(t => this.searchTerms.includes(t))
     }
-
-    /**
-     * Get emoji SVG url.
-     * @returns {string} the emoji SVG url
-     */
-    get svgUrl() {
-        return `/assets/svg/${this.slug}.svg`;
-    }
-
-    /**
-     * Get emoji PNG url.
-     * @returns {string} the emoji PNG url
-     */
-    get pngUrl() {
-        return `https://resvg.emoji.lgbt/api/v1/7a31cfe8/${this.slug}.png?width=128`;
-    }
-}
-
-// Expect the page to hand us all the data in `RAW_SEARCH_DATA`:
-/** @typedef {Record<string, RawEmoji>} RAW_SEARCH_DATA */
-// Transform it for our purposes:
-const SEARCH_DATA = Object.fromEntries(
-    Object.entries(RAW_SEARCH_DATA).map(([k, v]) => (
-        [k, new Emoji(v.title, v.slug)]
-    ))
-);
-
-/**
- * Emoji tiles DOM element.
- *
- * @type {HTMLDivElement}
- */
-let emojiTiles;
-
-/**
- * Search for emoji.
- *
- * @param {string | undefined} [query] the query to search for
- * @returns {[Emoji]} the matching emoji
- */
-function searchEmoji(query) {
-    if (!query) {
-        return Object.values(SEARCH_DATA);
-    }
-    const results = [];
-    const queryLower = query.toLowerCase();
-    for (const emoji of Object.values(SEARCH_DATA)) {
-        if (emoji.titleLower.includes(queryLower) || emoji.slugLower.includes(queryLower)) {
-            results.push(emoji);
-        }
-    }
-    return results;
-}
-
-/**
- * Search for emoji, and update the DOM with the results.
- *
- * @param {string | undefined} [query] the query to search for
- */
-function searchEmojiDom(query) {
-    const results = searchEmoji(query);
-    emojiTiles.replaceChildren(...results.map(e => renderEmojiCard(e)));
 }
 
 /**
@@ -104,17 +47,41 @@ function debounce(func, timeout = 100) {
     };
 }
 
+const readPageData = id => JSON.parse(document.getElementById(id).textContent)
+
 document.addEventListener("DOMContentLoaded", () => {
-    emojiTiles = document.getElementById("emoji-tiles");
-    // Trigger the initial load.
-    searchEmojiDom();
+    const emojiTiles = document.getElementById("emoji-tiles");
+
+    // Read emoji data from page
+    const EMOJI_DATA = Object.entries(JSON.parse(
+        document.getElementById('emoji-data').textContent
+    )).map(([id, data]) =>
+        new Emoji(id, data.title, data.url, data.svg, data.tags)
+    )
+
+    /**
+     * @param {string} query 
+     * @returns {Emoji[]}
+     */
+    function searchEmoji(query) {
+        if (!query) return EMOJI_DATA
+        const terms = query.toLowerCase().split(' ')
+        return EMOJI_DATA.filter(e => e.match(terms))
+    }
+
+    function searchEmojiDom(query) {
+        const results = searchEmoji(query);
+        emojiTiles.replaceChildren(...results.map(e => renderEmojiCard(e)));
+    }
+
 
     // Bind the search input to the search function.
     const searchInput = document.getElementById("search-bar");
     const searcher = debounce(searchEmojiDom);
-    searchInput.addEventListener("input", () => {
-        searcher(searchInput.value);
-    });
+    searchInput.addEventListener("input", () => searcher(searchInput.value));
+
+    // Trigger the initial load.
+    searchEmojiDom();
 });
 
 /**

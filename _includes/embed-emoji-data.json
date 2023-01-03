@@ -1,0 +1,11 @@
+{
+  {% for emoji in site.emoji -%}
+    {%- assign emoji_source = site.emoji_source | where:"slug", emoji.slug | first -%}
+    {{ emoji.slug | jsonify }}: {
+        "title": "{{ emoji.title }}",
+        "url": {{ emoji.url | jsonify }},
+        "svg": {{ emoji_source.url | jsonify }}{% if emoji.tags and emoji.tags.size != 0 %},
+        "tags": {{ emoji.tags | jsonify }}{% endif %}
+    }{% unless forloop.last %},{% endunless -%}
+  {% endfor -%}
+}

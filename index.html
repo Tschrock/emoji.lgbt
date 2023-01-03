@@ -1,7 +1,10 @@
 ---
 layout: default
 ---
-{% include embed-emoji-data.html %}
+<script id="emoji-data" type="application/json">
+    {% include embed-emoji-data.json %}
+</script>
+
 <script defer src="{{ '/assets/js/emoji-list.js' | relative_url }}"></script>
 
 <div class="d-flex is-flex-direction-column is-align-items-center">
