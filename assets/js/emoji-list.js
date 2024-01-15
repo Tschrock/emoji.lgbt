@@ -25,7 +25,7 @@ class Emoji {
      * @returns {boolean}
      */
     match(terms) {
-        return terms.every(t => this.searchTerms.includes(t))
+        return terms.every(t => this.searchTerms.some(e => e.includes(t)))
     }
 }
 
