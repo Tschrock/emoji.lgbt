@@ -1,7 +1,12 @@
-title: Genderfluid Egg
+name: "Genderfluid Egg"
 sources:
- - name: CyberPon3
-   link: https://twitter.com/CyberPon3
- - name: Twemoji
-   link: https://twemoji.twitter.com/
-license: CC-BY-NC-4.0
+  - name: "CyberPon3"
+    link: "https://twitter.com/CyberPon3"
+  - name: "Twemoji"
+    link: "https://twemoji.twitter.com/"
+license: "CC-BY-4.0"
+tags:
+  - "egg"
+  - "🥚"
+  - "genderfluid"
+  - "fluid"

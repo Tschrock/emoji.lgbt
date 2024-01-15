@@ -1,8 +1,15 @@
-title: Asexual Sparkling Heart
+name: "Asexual Sparkling Heart"
 sources:
- - name: CyberPon3
-   link: https://twitter.com/CyberPon3
- - name: Twemoji
-   link: https://twemoji.twitter.com/
-license: CC-BY-NC-4.0
-tags: [ace, asexual, heart, sparkles, 💖]
+  - name: "CyberPon3"
+    link: "https://twitter.com/CyberPon3"
+  - name: "Twemoji"
+    link: "https://twemoji.twitter.com/"
+license: "CC-BY-4.0"
+tags:
+  - "sparkle"
+  - "sparkling"
+  - "heart"
+  - "💖"
+  - "asexual"
+  - "ace"
+  - "a-spec"

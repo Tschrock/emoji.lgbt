@@ -1,7 +1,12 @@
-title: Pansexual Diagonal Heart
+name: "Pansexual Diagonal Heart"
 sources:
- - name: CyberPon3
-   link: https://twitter.com/CyberPon3
- - name: Twemoji
-   link: https://twemoji.twitter.com/
-license: CC-BY-NC-4.0
+  - name: "CyberPon3"
+    link: "https://twitter.com/CyberPon3"
+  - name: "Twemoji"
+    link: "https://twemoji.twitter.com/"
+license: "CC-BY-4.0"
+tags:
+  - "heart"
+  - "❤️"
+  - "pansexual"
+  - "pan"

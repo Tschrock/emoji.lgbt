@@ -1,0 +1,13 @@
+name: "Androgyne Ghost"
+sources:
+  - name: "CyberPon3"
+    link: "https://twitter.com/CyberPon3"
+  - name: "Noto Emoji"
+    link: "https://github.com/googlefonts/noto-emoji/blob/617db977/svg/emoji_u1f47b.svg"
+license: "Apache License 2.0"
+tags:
+  - "ghost"
+  - "👻"
+  - "androgyne"
+  - "androgynous"
+  - "andro"

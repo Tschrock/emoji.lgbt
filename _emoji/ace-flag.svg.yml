@@ -1,8 +1,13 @@
-title: Asexual Flag
+name: "Asexual Flag"
 sources:
- - name: CyberPon3
-   link: https://twitter.com/CyberPon3
- - name: Twemoji
-   link: https://twemoji.twitter.com/
-license: CC-BY-NC-4.0
-tags: [ace, asexual, flag]
+  - name: "CyberPon3"
+    link: "https://twitter.com/CyberPon3"
+  - name: "Twemoji"
+    link: "https://twemoji.twitter.com/"
+license: "CC-BY-4.0"
+tags:
+  - "flag"
+  - "🏳️‍🌈"
+  - "asexual"
+  - "ace"
+  - "a-spec"

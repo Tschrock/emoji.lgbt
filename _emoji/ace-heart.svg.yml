@@ -1,8 +1,13 @@
-title: Asexual Heart
+name: "Asexual Heart"
 sources:
- - name: CyberPon3
-   link: https://twitter.com/CyberPon3
- - name: Twemoji
-   link: https://twemoji.twitter.com/
-license: CC-BY-NC-4.0
-tags: [ace, asexual, heart, ❤️]
+  - name: "CyberPon3"
+    link: "https://twitter.com/CyberPon3"
+  - name: "Twemoji"
+    link: "https://twemoji.twitter.com/"
+license: "CC-BY-4.0"
+tags:
+  - "heart"
+  - "❤️"
+  - "asexual"
+  - "ace"
+  - "a-spec"
