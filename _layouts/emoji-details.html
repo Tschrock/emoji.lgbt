@@ -45,6 +45,8 @@ layout: base
                     <strong>License:</strong>
                     {% if license != nil %}
                     <a href="{{ license.url }}" title="{{ license.title }}">{{ license.id }}</a>
+                    {% else if page.license != nil %}
+                    {{ page.license }}
                     {% else %}
                     Unknown
                     {% endif %}
