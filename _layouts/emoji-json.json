@@ -10,7 +10,7 @@
             "name": {{ page.title | jsonify }},
             "sources": {{ page.sources | jsonify }},
             "license": {{ page.license | jsonify }},
-            "tags": {{ emoji.tags | jsonify }}
+            "tags": {{ page.tags | jsonify }}
         },
         "meta": {
             "details_url": {{ emoji_details.url | absolute_url | jsonify }},
