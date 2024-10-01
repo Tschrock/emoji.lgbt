@@ -1,0 +1,23 @@
+---
+---
+{%- assign pathParts = page.url | split:'.' -%}
+{%- if pathParts.size > 1 -%}
+    {%- assign pathParts = pathParts | pop -%}
+{%- endif -%}
+{%- assign path = pathParts | join:'.' | append:'/' -%}
+{%- assign endpoints = site.pages | where:"dir", path -%}
+{
+    "data": [
+      {%- for page in endpoints %}
+        {
+            "type": "endpoint",
+            "id": {{ page.url | slugify | jsonify }},
+            "attributes": {
+                "name": {{ page.title | jsonify }},
+                "description": {{ page.description | jsonify }},
+                "url": {{ page.url | jsonify }}
+            }
+        }{% unless forloop.last %},{% endunless -%}
+      {%- endfor %}
+    ]
+}
