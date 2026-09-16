@@ -74,14 +74,39 @@ document.addEventListener("DOMContentLoaded", () => {
         emojiTiles.replaceChildren(...results.map(e => renderEmojiCard(e)));
     }
 
+    function readQuery() {
+        return new URLSearchParams(window.location.search).get("q") || "";
+    }
+
+    function writeQuery(query) {
+        const url = new URL(window.location.href);
+        if (query) {
+            url.searchParams.set("q", query);
+        } else {
+            url.searchParams.delete("q");
+        }
+        history.replaceState(history.state, "", url);
+    }
+
+    function search(query) {
+        searchEmojiDom(query);
+        writeQuery(query);
+    }
 
     // Bind the search input to the search function.
     const searchInput = document.getElementById("search-bar");
-    const searcher = debounce(searchEmojiDom);
+    const searcher = debounce(search);
     searchInput.addEventListener("input", () => searcher(searchInput.value));
 
-    // Trigger the initial load.
-    searchEmojiDom();
+    // Keep the input in sync with history
+    window.addEventListener("popstate", () => {
+        searchInput.value = readQuery();
+        searchEmojiDom(searchInput.value);
+    });
+
+    // Trigger the initial load
+    searchInput.value = readQuery();
+    searchEmojiDom(searchInput.value);
 });
 
 /**
