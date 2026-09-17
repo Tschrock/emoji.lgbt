@@ -1,8 +1,8 @@
 ---
 layout: base
 ---
-{% assign emoji_source = site.emoji_source | where:"title", page.title | first -%}
-{% assign emoji_json = site.emoji_json | where:"title", page.title | first -%}
+{% assign emoji_source = site.emoji_source | where:"slug", page.slug | first -%}
+{% assign emoji_json = site.emoji_json | where:"slug", page.slug | first -%}
 
 {% assign license = site.data.licenses | where:"id",page.license | first %}
 {% if license == nil %}{% assign license = site.data.licenses | where:"title",page.license | first %}{% endif %}

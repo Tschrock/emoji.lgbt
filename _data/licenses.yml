@@ -7,3 +7,6 @@
 - id: Apache-2.0
   title: Apache License 2.0
   url: https://www.apache.org/licenses/LICENSE-2.0
+- id: CC-BY-NC-SA-4.0
+  title: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+  url: https://creativecommons.org/licenses/by-nc-sa/4.0/

@@ -1,7 +1,7 @@
 ---
 ---
-{% assign emoji_details = site.emoji | where:"title", page.title | first %}
-{% assign emoji_source = site.emoji_source | where:"title", page.title | first %}
+{% assign emoji_details = site.emoji | where:"slug", page.slug | first %}
+{% assign emoji_source = site.emoji_source | where:"slug", page.slug | first %}
 {
     "data": {
         "type": "emoji",

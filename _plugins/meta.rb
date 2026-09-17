@@ -4,6 +4,7 @@ module DocumentOverrides
         meta_file = (path + ".yml")
         if File.exist?(meta_file)
             meta_data = SafeYAML.load_file(meta_file)
+            meta_data["title"] ||= meta_data["name"] if meta_data["name"]
             merge_data!(meta_data, :source => "YAML sidecar")
         end
     end
